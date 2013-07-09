@@ -1,0 +1,60 @@
+{% extends 'base_menu.html' %}
+ 
+ 
+{% block title %} MEETme {% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/home.css"> 
+{% endblock %}
+{% block content %}
+<div id="events">
+    <h2 style="color:#3bb9ff"> Events </h2>
+
+    {% for event in events %}
+    <div class="event">
+        <h2>
+            <a href="{{event}}">
+                {{event.title}}
+            </a>
+        </h2>
+        <p><span class="interests">{{event.interests}}</span></p>
+        <p>
+            <time datetime="{{event.when|date:"c"}}">
+            {{event.when|date}}
+            </time>
+        </p>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+
+
+
+<div id="CE">
+	<a href="#" id="create_event">Create Event </a>
+	<div id="new_event">
+		<form>
+		<table id="ceTable">
+		<tr>
+		<td>Title:</td>
+		<td><input type="text" name="title"></td>
+		</tr>
+		<tr>
+		<td>Interest:</td>
+		<td><select></select></td>
+		</tr>
+		<tr>
+		<td>Description:</td>
+		<td><textarea name="description" rows="8" cols="40"></textarea></td>
+		</tr>
+		<tr>
+		<td></td>
+		<td style="text-align:right;"><input type="submit" name="create" value="Create Event" /></td>
+		</tr>
+		</table>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
